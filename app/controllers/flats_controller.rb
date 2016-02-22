@@ -9,11 +9,11 @@ class FlatsController < ApplicationController
     end
 
     def new
-      @flat = Flat.new
+      @flat = current_user.flats.new
     end
 
     def create
-      @flat = Flat.new(flat_params)
+      @flat = current_user.flats.new(flat_params)
     end
 
     def destroy
@@ -27,7 +27,7 @@ private
   end
 
   def flat_params
-    params.require(:flat).permit(:user_id, :address, :description)
+    params.require(:flat).permit(:address, :description)
   end
 
 end
