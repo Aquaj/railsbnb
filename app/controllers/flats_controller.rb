@@ -14,10 +14,16 @@ class FlatsController < ApplicationController
 
     def create
       @flat = current_user.flats.new(flat_params)
+      if @flat.save
+        redirect_to @flat
+      else
+        render :new
+      end
     end
 
     def destroy
       @flat.destroy
+      redirect_to flats_path
     end
 
 private
