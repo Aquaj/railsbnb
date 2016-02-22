@@ -16,12 +16,6 @@ class FlatsController < ApplicationController
       @flat = Flat.new(flat_params)
     end
 
-    def update
-    end
-
-    def edit
-    end
-
     def destroy
       @flat.destroy
     end
