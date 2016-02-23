@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :flats, only: [:index, :show, :new, :create, :destroy]
-  resources :users, only: [:show, :edit, :new, :create] do
+  resources :users, only: [] do
     resources :bookings, only: [:index, :show, :new, :create, :destroy]
-    get 'flats' => "users#show_flats"
+    get 'flats' => "flats#show_flats_owned"
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
