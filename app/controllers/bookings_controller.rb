@@ -1,16 +1,24 @@
 class BookingsController < ApplicationController
-  before_action :find_booking, only: [ :new, :create ]
+  before_action :find_booking, only: [ :show, :destroy ]
 
 def create
-  @booking = @user.booking.build(booking_params)
-  @booking.save
+  @booking = @user.bookings.new(booking_params)
+  if @booking.save
+    redirect_to @booking
+  else render :new
+  end
 end
 
 def new
+  @booking = Booking.new
+
 end
 
 def show
-  @booking.all
+end
+
+def index
+  @bookings = Booking.all
 end
 
 
