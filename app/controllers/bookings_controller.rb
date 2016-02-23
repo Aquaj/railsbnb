@@ -17,6 +17,7 @@ def new
 end
 
 def show
+  @price = (end_date - start_date).to_i * @booking.flat.price
 end
 
 def index
@@ -27,6 +28,8 @@ end
 def destroy
   @booking.destroy
 end
+
+
 
 private
 
