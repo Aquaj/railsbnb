@@ -21,7 +21,7 @@ flats = Array.new(30) do |number|
 end
 
 puts "-- Creating Bookings"
-date1 = Date.new()
+date1 = Date.today
 bookings = Array.new(15) do |number|
   date2 = date1 + (3..15).to_a.sample
   users.sample.bookings.create!(start_date: date1 , end_date: date2, flat_id: flats.sample.id)
