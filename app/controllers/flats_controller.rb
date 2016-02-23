@@ -26,6 +26,11 @@ class FlatsController < ApplicationController
       redirect_to flats_path
     end
 
+    def show_flats
+      @flats = Flat.all.select { |f| f.user == params[:user_id] }
+      render :index
+    end
+
 private
 
   def find_flat
