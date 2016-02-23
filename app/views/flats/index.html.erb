@@ -1,0 +1,11 @@
+<h2>Index</h2>
+
+<div class="flats">
+  <% @flats.each do |flat| %>
+    <div class="flat">
+      <h3><%= link_to flat.address, flat %></h3>
+      <p><%= flat.description %><p>
+      <%= link_to "Delete", flat, method: :delete %>
+    </div>
+  <% end %>
+</div>
