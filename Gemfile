@@ -25,8 +25,10 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'
+  gem 'annotate'
 end
 
 group :production do
   gem 'rails_12factor'
 end
+
