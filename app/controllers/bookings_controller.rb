@@ -21,7 +21,7 @@ def show
 end
 
 def index
-  @bookings = Booking.all
+  @bookings = User.find(params[:user_id]).bookings
 end
 
 
