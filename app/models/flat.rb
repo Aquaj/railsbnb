@@ -5,4 +5,5 @@ class Flat < ActiveRecord::Base
   validates :user, presence: true
   validates :description, presence: true
   validates :address, presence: true
-end
+  validates :price, presence: true
+  validates :price, numericality => { :greater_than_or_equal_to => 0 }
