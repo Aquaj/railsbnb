@@ -6,10 +6,8 @@ Rails.application.routes.draw do
   resources :flats, only: [:index, :show, :new, :create, :destroy] do
     resources :bookings, only: [:new, :create]
   end
-  resources :users, only: [] do
-    resources :bookings, only: [:index, :show, :destroy]
-    get 'flats' => "flats#show_flats"
-  end
+  resources :bookings, only: [:index, :show, :destroy]
+  get 'my_flats' => "flats#show_flats"
 
 
   # The priority is based upon order of creation: first created -> highest priority.

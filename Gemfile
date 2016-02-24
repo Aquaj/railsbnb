@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby '2.3.0'
 
 gem 'rails', '4.2.5.1'
+gem 'coffee-rails', '~> 4.1.0'
 gem 'puma'
 gem 'pg'
 gem 'figaro'
@@ -10,8 +11,10 @@ gem 'redis'
 gem 'devise'
 gem 'omniauth'
 gem 'faker'
+gem 'underscore-rails'
 gem "geocoder"
 gem 'omniauth-facebook'
+gem 'gmaps4rails'
 
 gem 'sass-rails'
 gem 'jquery-rails'
