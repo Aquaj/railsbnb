@@ -5,9 +5,10 @@ def create
   @flat = Flat.find(params[:flat_id])
   @booking = current_user.bookings.new(booking_params)
   if @booking.save
-    redirect_to user_booking_path(current_user, @booking)
+    raise
+    redirect_to booking_path @booking
   else
-    render :new
+    render "bookings/new"
   end
 end
 
@@ -35,6 +36,7 @@ end
 private
 
   def booking_params
+    params[:booking][:flat_id] = params[:flat_id] if params[:booking]
     params.require(:booking).permit(:user_id, :flat_id, :start_date, :end_date)
   end
 

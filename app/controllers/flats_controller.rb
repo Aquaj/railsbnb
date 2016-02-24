@@ -35,8 +35,7 @@ class FlatsController < ApplicationController
     end
 
     def show_flats
-      @flats = Flat.all.select { |f| f.user == params[:user_id] }
-      render :index
+      @flats = Flat.all.select { |f| f.user == current_user }
     end
 
 private
