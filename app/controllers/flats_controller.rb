@@ -8,7 +8,6 @@ class FlatsController < ApplicationController
       if !@search.blank?
         @flats = Flat.all.where("address = ?", @search)
       end
-
     end
 
     def show
@@ -48,3 +47,4 @@ private
   end
 
 end
+
