@@ -6,40 +6,40 @@ def create
   @booking = current_user.bookings.new(booking_params)
   if @booking.save
     redirect_to user_booking_path(current_user, @booking)
-  else render :new
+  else
+    render :new
   end
 end
 
 def new
-  @booking = Booking.new
   @flat = Flat.find(params[:flat_id])
+  @booking = @flat.bookings.new
 end
 
 def show
-  @price = (end_date - start_date).to_i * @booking.flat.price
+  if current_user == @booking.user
+    @price = (@booking.end_date - @booking.start_date).to_i * @booking.flat.price
+  else
+    redirect_to "/404.html"
+  end
 end
 
 def index
-  @bookings = User.find(params[:user_id]).bookings
+  @bookings = current_user.bookings
 end
-
 
 def destroy
   @booking.destroy
 end
 
-
-
 private
 
-def booking_params
-    params[:booking][:flat_id] = params[:flat_id] if params[:booking]
+  def booking_params
     params.require(:booking).permit(:user_id, :flat_id, :start_date, :end_date)
   end
-def find_booking
-    @booking = Booking.find(params[:user_id])
-end
 
-
+  def find_booking
+    @booking = Booking.find(params[:id])
+  end
 
 end
