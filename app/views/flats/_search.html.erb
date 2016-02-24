@@ -1,8 +1,5 @@
 <%= simple_form_for :search,  url: flats_path, method: :get do |f| %>
-  <% @search = params[:search][:address] if params[:search] %>
-    <%= f.input :address, input_html:{value: @search} %>
-
+    <%= f.input :address, input_html:{value: @address} %>
+    <%= f.input :radius, input_html:{value: @radius} %>
     <%= f.submit "Search" %>
 <% end %>
-
-<!--  -->
