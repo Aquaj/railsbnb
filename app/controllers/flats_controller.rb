@@ -5,11 +5,13 @@ class FlatsController < ApplicationController
     def index
       if params[:search]
         @address = params[:search][:address]
-        @radius = params[:search][:radius]
+        @radius = params[:search][:radius] || 10
       end
       @flats = Flat.all
       @flats = @flats.near(@address, @radius) if @address
     end
+
+
 
     def show
     end
