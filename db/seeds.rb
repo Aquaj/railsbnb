@@ -8,9 +8,8 @@
 
 User.destroy_all
 
-<<<<<<< HEAD
 puts "Seed started !"
-=======
+
 puts "-- Generated addresses"
 addresses = [
 "45 York St, Manchester, Manchester M1 7DE, UK",
@@ -136,7 +135,6 @@ addresses = [
 ]
 
 rand_addresses = addresses.sample(30)
->>>>>>> master
 
 puts "-- Creating Users"
 users = Array.new(10) do |number|
