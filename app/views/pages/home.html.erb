@@ -1,11 +1,8 @@
-<h3>Pages#home</h3>
-
-
-<div class="banner" style="background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('background.jpg');">
+<div class="banner" style="background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_url "airstream.png" %>');">
   <div class="banner-content">
     <h1>Stay Elsewhere</h1>
     <p>welcome to Railsbnb...</p>
-    <a class="btn btn-primary btn-lg">GET IT</a>
+    <a class="btn btn-primary btn-lg" href="<%= flats_path %>">Find your new home</a>
   </div>
 </div>
 
