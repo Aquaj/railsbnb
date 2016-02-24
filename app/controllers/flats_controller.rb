@@ -3,7 +3,12 @@ class FlatsController < ApplicationController
     skip_before_action :authenticate_user!, only: [:index, :show]
 
     def index
+      @search = params[:search][:address]
       @flats = Flat.all
+      if !@search.blank?
+        @flats = Flat.all.where("address = ?", @search)
+      end
+
     end
 
     def show
