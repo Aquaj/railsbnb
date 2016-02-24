@@ -13,6 +13,7 @@ gem 'omniauth'
 gem 'faker'
 gem 'underscore-rails'
 gem "geocoder"
+gem 'omniauth-facebook'
 gem 'gmaps4rails'
 
 gem 'sass-rails'
