@@ -1,11 +1,26 @@
-<h2>Index</h2>
+<h2>Where would you like to stay?</h2>
 
-<div class="flats">
-  <% @flats.each do |flat| %>
-    <div class="flat">
-      <h3><%= link_to flat.address, flat %></h3>
-      <p><%= flat.description %><p>
-      <%= link_to "Delete", flat, method: :delete %>
+<div class="container">
+  <div class="flats">
+    <div class="row">
+      <% @flats.each do |flat| %>
+        <div class="col-xs-12 col-sm-4 ">
+          <div class="flat">
+            <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('background.jpg');">
+              <div class="card-category">Popular</div>
+              <div class="card-description">
+                <h2><%= link_to flat.address, flat %></h2>
+                <p><%= flat.description %></p>
+                <%= link_to "Delete", flat, method: :delete %>
+              </div>
+              <img class="card-user avatar" src="user.jpg">
+              <a class="card-link" href="#" ></a>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </div>
+
+
