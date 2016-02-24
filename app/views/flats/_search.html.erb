@@ -1,8 +1,5 @@
 <%= simple_form_for :search,  url: flats_path, method: :get do |f| %>
-  <% @search = params[:search][:address] if params[:search] %>
-    <%= f.input :address, input_html:{value: @search} %>
-
+    <%= f.input :address, placeholder: "where would you like to stay?",input_html:{value: @address} %>
+    <%= f.input :distance, as: :integer, min: 0, placeholder: "10km", input_html:{value: @distance} %>
     <%= f.submit "Search" %>
 <% end %>
-
-<!--  -->
