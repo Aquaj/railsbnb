@@ -6,10 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-puts "Seed started !"
-
-puts "-- Destroying old users"
 User.destroy_all
+
+puts "Seed started !"
 
 puts "-- Generated addresses"
 addresses = [
@@ -144,7 +143,7 @@ end
 
 puts "-- Creating Flats"
 flats = Array.new(30) do |number|
-  users.sample.flats.create!(description: "Test #{number+1}", address: rand_addresses[number], price: (50..500).to_a.sample)
+  users.sample.flats.create!(description: "Test #{number+1}", address: "#{Faker::Address.street_name} #{Faker::Address.city}", price: (50..500).to_a.sample)
 end
 
 puts "-- Creating Bookings"
