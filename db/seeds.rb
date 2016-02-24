@@ -6,9 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+puts "Seed started !"
+
+puts "-- Destroying old users"
 User.destroy_all
 
-puts "Seed started !"
 
 puts "-- Generated addresses"
 addresses = [
