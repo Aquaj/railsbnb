@@ -11,8 +11,6 @@ class FlatsController < ApplicationController
       @flats = @flats.near(@address, @radius) if @address
     end
 
-
-
     def show
     end
 

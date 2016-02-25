@@ -14,6 +14,8 @@ class Flat < ActiveRecord::Base
   validates :swimming_pool, presence: true
   validates :wheelchair, presence: true
 
+  has_attachments :photos, maximum: 3, minimum: 1
+
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 end
