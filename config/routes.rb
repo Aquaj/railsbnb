@@ -1,16 +1,15 @@
 Rails.application.routes.draw do
 
-  devise_for :users, :controllers => { registrations: 'registrations' }
+  devise_for :users, :controllers => { registrations: 'registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'pages#home'
 
   resources :flats, only: [:index, :show, :new, :create, :destroy] do
     resources :bookings, only: [:new, :create]
   end
-  resources :users, only: [] do
-    resources :bookings, only: [:index, :show, :destroy]
-    get 'flats' => "flats#show_flats"
-  end
+  resources :bookings, only: [:index, :show, :destroy]
+  get 'my_flats' => "flats#show_flats"
 
+  mount Attachinary::Engine => "/attachinary"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

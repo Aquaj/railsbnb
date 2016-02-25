@@ -11,10 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160224103747) do
+ActiveRecord::Schema.define(version: 20160225142547) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attachinary_files", force: :cascade do |t|
+    t.integer  "attachinariable_id"
+    t.string   "attachinariable_type"
+    t.string   "scope"
+    t.string   "public_id"
+    t.string   "version"
+    t.integer  "width"
+    t.integer  "height"
+    t.string   "format"
+    t.string   "resource_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "attachinary_files", ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent", using: :btree
 
   create_table "bookings", force: :cascade do |t|
     t.date     "start_date"
@@ -32,11 +48,20 @@ ActiveRecord::Schema.define(version: 20160224103747) do
     t.text     "description"
     t.string   "address"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "price"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "photo"
+    t.integer  "capacity"
+    t.integer  "bathroom"
+    t.integer  "bedroom"
+    t.time     "departure_time"
+    t.boolean  "tv_wifi"
+    t.boolean  "washing_machine"
+    t.boolean  "swimming_pool"
+    t.boolean  "wheelchair"
   end
 
   add_index "flats", ["user_id"], name: "index_flats_on_user_id", using: :btree
@@ -56,6 +81,13 @@ ActiveRecord::Schema.define(version: 20160224103747) do
     t.datetime "updated_at",                          null: false
     t.string   "name"
     t.string   "address"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "picture"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "token"
+    t.datetime "token_expiry"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
