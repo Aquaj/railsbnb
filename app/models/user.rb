@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   # validates :name, uniqueness: true
 
   after_save :send_welcome_email
+  has_attachment :picture
 
   def send_welcome_email
     UserMailer.welcome(self).deliver_now
@@ -26,7 +27,7 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]  # Fake password for validation
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
-      user.picture = auth.info.image
+      user.picture_url = auth.info.image
       user.token = auth.credentials.token
       user.token_expiry = Time.at(auth.credentials.expires_at)
     end
