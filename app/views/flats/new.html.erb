@@ -1,8 +1,29 @@
-<h2>New</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+      <h2>New</h2>
 
-<%= simple_form_for @flat do |f| %>
-  <%= f.input :address %>
-  <%= f.input :description %>
-  <%= f.input :price %>
-  <%= f.submit %>
-<% end %>
+      <%= simple_form_for @flat do |f| %>
+      <%= f.input :address %>
+      <%= f.input :description %>
+      <%= f.input :price %>
+      <%= f.input :bathroom %>
+      <%= f.input :bedroom %>
+      <%= f.input :departure_time %>
+      <%= f.input :tv_wifi %>
+      <%= f.input :washing_machine %>
+      <%= f.input :wheelchair %>
+      <%= f.input :swimming_pool %>
+      <%= f.input :photos, as: :attachinary %>
+      <div class="form-actions">
+        <%= f.button :submit, "Log in" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
+

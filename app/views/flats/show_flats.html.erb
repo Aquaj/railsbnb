@@ -1,0 +1,31 @@
+<div class="container">
+<%= link_to "New apartment", new_flat_path %>
+  <div class="flats">
+    <div class="row">
+      <% @flats.each do |flat| %>
+        <div class="col-xs-12 col-sm-4 ">
+          <div class="flat">
+            <%= link_to flat do %>
+            <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('background.jpg');">
+              <div class="card-category">Popular</div>
+              <div class="card-description">
+                <h2><%= flat.address %></h2>
+                <p><%= flat.description %></p>
+                <% flat.photos.each do |photo| %>
+                  <%= cl_image_tag(photo.path) %>
+                <% end %>
+                <% if flat.user == current_user %>
+                  <%= link_to "Delete", flat, method: :delete %>
+                <% end %>
+              </div>
+              <img class="card-user avatar" src="user.jpg">
+            </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
