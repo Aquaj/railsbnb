@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :bookings, only: [:index, :show, :destroy]
   get 'my_flats' => "flats#show_flats"
 
+  mount Attachinary::Engine => "/attachinary"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

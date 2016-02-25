@@ -15,6 +15,8 @@ gem 'underscore-rails'
 gem "geocoder"
 gem 'omniauth-facebook'
 gem 'gmaps4rails'
+gem 'cloudinary'
+gem 'attachinary'
 
 gem 'sass-rails'
 gem 'jquery-rails'

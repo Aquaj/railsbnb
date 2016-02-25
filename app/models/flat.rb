@@ -8,6 +8,8 @@ class Flat < ActiveRecord::Base
   validates :price, presence: true
   validates :price, :numericality => { :greater_than_or_equal_to => 0 }
 
+  has_attachments :photos, maximum: 3, minimum: 1
+
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 end

@@ -30,7 +30,7 @@
       <div class="navbar-wagon-item">
         <div class="dropdown">
         <% if current_user.picture.present? %>
-          <%= image_tag current_user.picture, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <%= cl_image_tag current_user.picture.path, size: '30x30', class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
         <% else %>
           <%= image_tag "http://placehold.it/30/30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
         <% end %>
