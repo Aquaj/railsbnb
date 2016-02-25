@@ -34,6 +34,8 @@ group :development, :test do
   gem 'pry-rails'
   gem 'spring'
   gem 'annotate'
+  gem "letter_opener"
+
 end
 
 group :production do
