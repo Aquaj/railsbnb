@@ -45,7 +45,7 @@ private
   end
 
   def flat_params
-    params.require(:flat).permit(:address, :price, :description)
+    params.require(:flat).permit(:address, :price, :description, :photo, :photo_cache)
   end
 
 end
