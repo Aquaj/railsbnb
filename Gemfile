@@ -17,6 +17,7 @@ gem 'omniauth-facebook'
 gem 'gmaps4rails'
 gem 'cloudinary'
 gem 'attachinary'
+gem 'carrierwave'
 
 gem 'sass-rails'
 gem 'jquery-rails'
@@ -26,6 +27,7 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
@@ -34,6 +36,8 @@ group :development, :test do
   gem 'pry-rails'
   gem 'spring'
   gem 'annotate'
+  gem "letter_opener"
+
 end
 
 group :production do

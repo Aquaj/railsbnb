@@ -7,7 +7,17 @@ class User < ActiveRecord::Base
 
   has_many :bookings, dependent: :destroy
   has_many :flats, dependent: :destroy
+
+  # validates :address, presence: true
+  # validates :name, presence: true
+  # validates :name, uniqueness: true
+
+  after_save :send_welcome_email
   has_attachment :picture
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_now
+  end
 
   def self.find_for_facebook_oauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

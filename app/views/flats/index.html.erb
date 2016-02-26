@@ -9,13 +9,18 @@
       <div class="col-xs-12 col-sm-4 ">
         <div class="flat">
           <%= link_to flat do %>
-          <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(flat.photos[0]) %>);">
+          <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path flat.photo %>');">
             <div class="card-category"><%= flat.address.split(",")[-1] %></div>
             <div class="card-description">
             <h2><%= "#{flat.address.split(",")[0]}, #{flat.address.split(",")[1].split[0]} #{flat.address.split(",")[-1]}" %></h2>
               <p><%= flat.description %></p>
               <% if flat.user == current_user %>
                 <%= link_to "Delete", flat, method: :delete %>
+              <% end %>
+              <% if flat.user.picture.present? %>
+                <%= cl_image_tag flat.user.picture.path, class: "card-user avatar" %>
+              <% else %>
+                <img class="card-user avatar" src="http://placehold.it/32x32">
               <% end %>
             </div>
             <% if flat.user.picture.present? %>
