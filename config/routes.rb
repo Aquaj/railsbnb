@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
   resources :bookings, only: [:index, :show, :destroy]
   get 'my_flats' => "flats#show_flats"
-
+  get 'profile' => "pages#profile"
   mount Attachinary::Engine => "/attachinary"
 
   # The priority is based upon order of creation: first created -> highest priority.
