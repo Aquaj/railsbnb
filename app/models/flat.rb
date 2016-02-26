@@ -9,10 +9,12 @@ class Flat < ActiveRecord::Base
   validates :price, :numericality => { :greater_than_or_equal_to => 0 }
   validates :bathroom, :numericality => { :greater_than_or_equal_to => 0 }
   validates :bedroom, :numericality => { :greater_than_or_equal_to => 0 }
-  validates :washing_machine, presence: true
-  validates :tv_wifi, presence: true
-  validates :swimming_pool, presence: true
-  validates :wheelchair, presence: true
+  validates :departure_time, presence: true
+  validates :departure_time, numericality: { greater_than_or_equal_to: 0, lesser_than: 23 }
+  validates :washing_machine, inclusion: { in: [true, false] }
+  validates :tv_wifi, inclusion: { in: [true, false] }
+  validates :swimming_pool, inclusion: { in: [true, false] }
+  validates :wheelchair, inclusion: { in: [true, false] }
 
   # has_attachments :photos, maximum: 3, minimum: 1
 
