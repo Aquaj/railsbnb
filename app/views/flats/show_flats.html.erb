@@ -11,9 +11,7 @@
               <div class="card-description">
                 <h2><%= flat.address %></h2>
                 <p><%= flat.description %></p>
-                <% flat.photos.each do |photo| %>
-                  <%= cl_image_tag(photo.path) %>
-                <% end %>
+                <%= cl_image_tag(flat.photo) %>
                 <% if flat.user == current_user %>
                   <%= link_to "Delete", flat, method: :delete %>
                 <% end %>
