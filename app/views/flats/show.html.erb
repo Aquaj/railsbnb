@@ -1,6 +1,6 @@
 <div class="flat-info">
   <% if @flat.photo.present? %>
-    <div class="top-banner" style="background-image: url(<%= @flat.photo.path %>)"></div>
+    <div class="top-banner" style="background-image: url(<%= cl_image_path @flat.photo, size:"1500x500" %>)"></div>
   <% else %>
     <div class="top-banner" style="background-image: url('http://placehold.it/1500')"></div>
   <% end %>

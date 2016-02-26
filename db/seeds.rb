@@ -138,7 +138,12 @@ rand_addresses = addresses.sample(30)
 
 puts "-- Creating Users"
 users = Array.new(10) do |number|
-  User.create!(name: Faker::Name.name, email: "test#{number+1}@test.com", password: "test"*3, password_confirmation: "test"*3, address: "#{Faker::Address.street_name} #{Faker::Address.city}")
+  User.create!(name: Faker::Name.name,
+               email: "test#{number+1}@test.com",
+               password: "test"*3,
+               password_confirmation: "test"*3,
+               address: addresses.sample,
+               picture_url: "http://lorempixel.com/500/500/people/")
 end
 
 puts "-- Creating Flats"
@@ -154,7 +159,8 @@ flats = Array.new(30) do |number|
                              washing_machine: [0, 1].sample,
                              swimming_pool: [0, 1].sample,
                              wheelchair: [0, 1].sample,
-                             )
+                             remote_photo_url: "http://lorempixel.com/1500/1500/city/"
+                            )
 end
 
 puts "-- Creating Bookings"
