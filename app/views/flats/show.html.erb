@@ -1,14 +1,36 @@
-<h2>Show</h2>
-
-<div class="flat">
-  <p>Owner: <span><%= @flat.user.name %></span></p>
-  <p>Address: <span><%= @flat.address %></span></p>
-  <p>Description: <span><%= @flat.description %></span><p>
-  <%= cl_image_tag @flat.photo, height: 300, width: 400, crop: :fill %>
-  <div class="content">
-    <div id="map" style='width: 400px; height: 200px;'></div>
+<div class="flat-info">
+  <% if @flat.photo.present? %>
+    <div class="top-banner" style="background-image: url(<%= @flat.photo.path %>)"></div>
+  <% else %>
+    <div class="top-banner" style="background-image: url('http://placehold.it/1500')"></div>
+  <% end %>
+  <div class="flat-content">
+    <div class="flat-details">
+      <div class="greetings">
+        <div class="owner-pic">
+          <% if @flat.user.picture %>
+            <%= cl_image_tag @flat.user.picture.path, size: "100x100" %>
+          <% else %>
+            <%= image_tag 'http://placehold.it/100', class: "avatar avatar-very-large" %>
+          <% end %>
+        </div>
+        <span class="name"><%= @flat.user.name %></span> welcomes you to the: <br>
+        <span class="address"> <%= @flat.address %></span>
+      </div>
+      <div class="flat-characteristics">
+        <div class="price"><%= @flat.price %>€/night</div>
+        <div class="capacity">Available for <%= @flat.capacity %> persons</div>
+        <div class="bathroom"><%= @flat.bathroom %> bathrooms</div>
+        <div class="bedroom"><%= @flat.bedroom %> bedrooms</div>
+        <div class="departure_time">Exit at <%= @flat.departure_time %></div>
+        <div class="tv_wifi"><%= @flat.tv_wifi %></div>
+        <div class="washing_machine"><%= @flat.washing_machine%></div>
+        <div class="swimming_pool"><%= @flat.swimming_pool%></div>
+        <div class="wheelchair"><%= @flat.wheelchair%></div>
+      </div>
+    </div>
+    <div class="map-container"><div id="map"></div></div>
   </div>
-  <%= link_to "Book this place.", new_flat_booking_path(@flat) %>
 </div>
 
 <% content_for(:js) do %>

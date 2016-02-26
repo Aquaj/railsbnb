@@ -1,17 +1,21 @@
-<div class="banner" style="background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_url "airstream.png" %>');">
+<% content_for :navbar_classes do %>
+  navbar-transparent navbar-wagon-fixed
+<% end %>
+
+<div class="banner" style="background: linear-gradient(-225deg, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.6) 45%, rgba(0,0,0,0.3) 55%, rgba(0,0,0,0.0) 70%), url('<%= image_url "airstream.png" %>');">
   <div class="banner-content">
     <h1>Stay Elsewhere</h1>
-    <p>welcome to Railsbnb...</p>
-    <a class="btn btn-primary btn-lg" href="<%= flats_path %>">Find your new home</a>
+    <p>Welcome to Railsbnb.</p>
+    <%= render 'shared/search' %>
   </div>
 </div>
 
 <div class="text-centered">
-<h2>Great Life Stories Start here</h2>
 </div>
 
 <div class="wrapper">
   <div class="row">
+    <div class="col-xs-12 title"><h2>Great Life Stories Start here</h2></div>
     <div class="col-xs-12 col-sm-4">
       <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://www.graydonkey.com/img/cool/as-the-old-song-says-heaven-is-a-place-on-earth/as-the-old-song-says-heaven-is-a-place-on-earth01.jpg');">
         <div class="card-category">Popular</div>
