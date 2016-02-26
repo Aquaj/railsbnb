@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225142547) do
+ActiveRecord::Schema.define(version: 20160226141538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,15 +53,15 @@ ActiveRecord::Schema.define(version: 20160225142547) do
     t.integer  "price"
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "photo"
     t.integer  "capacity"
     t.integer  "bathroom"
     t.integer  "bedroom"
-    t.time     "departure_time"
     t.boolean  "tv_wifi"
     t.boolean  "washing_machine"
     t.boolean  "swimming_pool"
     t.boolean  "wheelchair"
+    t.string   "photo"
+    t.integer  "departure_time"
   end
 
   add_index "flats", ["user_id"], name: "index_flats_on_user_id", using: :btree
