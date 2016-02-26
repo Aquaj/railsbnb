@@ -3,7 +3,7 @@ class FlatsController < ApplicationController
     skip_before_action :authenticate_user!, only: [:index, :show]
 
     def index
-      if params[:search]
+      if (params[:search] && !params[:search][:address].blank?)
         @address = params[:search][:address]
         @radius = params[:search][:radius] || 10
       end
