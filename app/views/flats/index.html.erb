@@ -1,28 +1,30 @@
-<h2>Where would you like to stay?</h2>
 
-<div class="container">
-<%= render 'search' %>
-<%= link_to "New apartment", new_flat_path %>
-  <div class="flats">
+<div class="flats">
+  <h2 class="title">Where would you like to stay?</h2>
+  <div class="container">
+    <%= render 'shared/search' %>
+    <%= link_to "New apartment", new_flat_path %>
     <div class="row">
       <% @flats.each do |flat| %>
-        <div class="col-xs-12 col-sm-4 ">
-          <div class="flat">
-            <%= link_to flat do %>
-            <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('background.jpg');">
-              <div class="card-category">Popular</div>
-              <div class="card-description">
-                <h2><%= flat.address %></h2>
-                <p><%= flat.description %></p>
-                <% if flat.user == current_user %>
-                  <%= link_to "Delete", flat, method: :delete %>
-                <% end %>
-              </div>
-              <img class="card-user avatar" src="user.jpg">
+      <div class="col-xs-12 col-sm-4 ">
+        <div class="flat">
+          <%= link_to flat do %>
+          <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(flat.photos[0]) %>);">
+            <div class="card-category"><%= flat.address.split(",")[-1] %></div>
+            <div class="card-description">
+            <h2><%= "#{flat.address.split(",")[0]}, #{flat.address.split(",")[1].split[0]} #{flat.address.split(",")[-1]}" %></h2>
+              <p><%= flat.description %></p>
+              <% if flat.user == current_user %>
+                <%= link_to "Delete", flat, method: :delete %>
+              <% end %>
             </div>
+            <% if flat.user.picture.present? %>
+              <%= cl_image_tag flat.user.picture.path, class: "card-user avatar" %>
             <% end %>
           </div>
+          <% end %>
         </div>
+      </div>
       <% end %>
     </div>
   </div>

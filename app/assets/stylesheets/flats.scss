@@ -1,3 +1,31 @@
 // Place all the styles related to the Flats controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.flats {
+
+  .title {
+    text-align: center;
+    margin: 25px 0;
+  }
+
+  .form-inline {
+    display: flex;
+    justify-content: center;
+
+    .form-group{
+      margin-right: 5px;
+    }
+
+    .btn-square {
+      color: $brand-primary;
+      text-shadow: none;
+      padding: 5px 10px;
+    }
+  }
+
+  .flat {
+    text-align: left;
+    margin: 5px 0;
+  }
+}

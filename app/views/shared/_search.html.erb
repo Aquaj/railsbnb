@@ -1,0 +1,5 @@
+<%= simple_form_for :search,  url: flats_path, html: { class: "form-inline"}, method: :get do |f| %>
+    <%= f.input :address, label: false, placeholder: "Where would you like to stay?", input_html:{value: @address, style: "width: 250px;"} %>
+    <%= f.input :distance, as: :integer, label: false, min: 0, placeholder: "10km", input_html:{value: @distance} %>
+    <%= f.submit "Find your new home", class: "btn-primary btn btn-square" %>
+<% end %>
