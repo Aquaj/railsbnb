@@ -33,6 +33,7 @@ class FlatsController < ApplicationController
     end
 
     def show_flats
+      @flat = current_user.flats.new
       @flats = Flat.all.select { |f| f.user == current_user }
     end
 

@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20160226141538) do
     t.integer  "price"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "photo"
     t.integer  "capacity"
     t.integer  "bathroom"
     t.integer  "bedroom"
@@ -60,7 +61,6 @@ ActiveRecord::Schema.define(version: 20160226141538) do
     t.boolean  "washing_machine"
     t.boolean  "swimming_pool"
     t.boolean  "wheelchair"
-    t.string   "photo"
     t.integer  "departure_time"
   end
 
