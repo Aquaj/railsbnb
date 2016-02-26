@@ -35,6 +35,7 @@
     height: 350px;
   }
   .flat-content{
+    background: #EEE;
     position: relative;
     height: 100%;
     .map-container{
@@ -54,19 +55,57 @@
       top: 0;
       left: 0;
       width: 65%;
-      padding: 5px;
+      padding: 0 5px 5px;
 
-      .greetings{
-        position: relative;
+      .flat-presentation{
         display: flex;
-        align-content: center;
-        position: relative;
+        flex-direction: row;
+        justify-content: space-between;
+        // border: 1px solid $brand-primary;
 
-        img{
-          position: absolute;
-          top: 5px;
-          right: 5px;
+        .flat-detail{
+          padding: 10px;
+          display: flex;
+          align-items: center;
         }
+
+        .flat-address{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+
+      .flat-characteristics{
+        .padded {
+          padding: 25px;
+        }
+      }
+
+      .characteristic {
+        margin: 0 auto;
+        height: 150px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        // border: 1px solid $brand-primary;
+        width: 150px;
+        background-color: white;
+        border-radius: 50%;
+      }
+      .logo {
+        width: 100%;
+        font-size: 46px;
+      }
+      .shower{
+        -webkit-transform: rotateX(180deg);
+        transform: rotateX(180deg);
+      }
+      .price{
+          background-color: transparent;;
       }
     }
   }
