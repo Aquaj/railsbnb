@@ -7,7 +7,7 @@ class Booking < ActiveRecord::Base
   validates :start_date, presence: true
   validates :end_date, presence: true
 
-  validate :overlap_booking
+#  validate :overlap_booking
 
   scope :overlapping, ->(a) {
     where(%q{ (start_date, end_date) OVERLAPS (?, ?) }, a.start_date, a.end_date)

@@ -1,42 +1,42 @@
 <% if locals.present? %>
-  <div class="navbar-wagon <%= locals[:class] %>">
-<% else %>
+<div class="navbar-wagon <%= locals[:class] %>">
+  <% else %>
   <div class="navbar-wagon">
-<% end %>
-  <!-- Logo -->
+    <% end %>
+    <!-- Logo -->
 
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
+    <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "railsbnb-v.png" %>
-  <% end %>
+    <% end %>
 
-  <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
+    <!-- Right Navigation -->
+    <div class="navbar-wagon-right hidden-xs hidden-sm">
 
-    <!-- Different navigation if login or not -->
-    <% if user_signed_in? %>
+      <!-- Different navigation if login or not -->
+      <% if user_signed_in? %>
 
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-        <% if current_user.picture.present? %>
+          <% if current_user.picture.present? %>
           <%= cl_image_tag current_user.picture.path, size: '30x30', class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-        <% else %>
+          <% else %>
           <%= image_tag "http://placehold.it/30/30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-        <% end %>
+          <% end %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to "/profile" do %>
-                <i class="fa fa-user"></i> <%= t ".profile", default: "Profile" %>
+              <i class="fa fa-user"></i> <%= t ".profile", default: "Profile" %>
               <% end %>
             </li>
             <li>
               <%= link_to "/" do %>
-                <i class="fa fa-home"></i>  <%= t ".profile", default: "Home" %>
+              <i class="fa fa-home"></i>  <%= t ".profile", default: "Home" %>
               <% end %>
             </li>
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t ".sign_out", default: "Log out" %>
+              <i class="fa fa-sign-out"></i>  <%= t ".sign_out", default: "Log out" %>
               <% end %>
             </li>
           </ul>
@@ -46,23 +46,23 @@
       <%= link_to t(".top_call_to_action", default: "My flats"), my_flats_path, class: "navbar-wagon-item navbar-wagon-button btn btn-square" %>
       <%= link_to t(".top_call_to_action", default: "My bookings"), bookings_path, class: "navbar-wagon-item navbar-wagon-button btn btn-square" %>
 
-    <% else %>
+      <% else %>
 
       <!-- Login text link -->
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link navbar-wagon-button btn btn-square" %>
 
-    <% end %>
-  </div>
+      <% end %>
+    </div>
 
-  <!-- Dropdown list appearing on mobile only -->
-  <div class="navbar-wagon-item hidden-md hidden-lg">
-    <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
-      </ul>
+    <!-- Dropdown list appearing on mobile only -->
+    <div class="navbar-wagon-item hidden-md hidden-lg">
+      <div class="dropdown">
+        <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li><a href="#">Some mobile link</a></li>
+          <li><a href="#">Other one</a></li>
+          <li><a href="#">Other one</a></li>
+        </ul>
+      </div>
     </div>
   </div>
-</div>

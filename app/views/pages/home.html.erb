@@ -20,10 +20,10 @@
       <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://www.graydonkey.com/img/cool/as-the-old-song-says-heaven-is-a-place-on-earth/as-the-old-song-says-heaven-is-a-place-on-earth01.jpg');">
         <div class="card-category">Popular</div>
         <div class="card-description">
-          <h2>Some stuff</h2>
-          <p>Very cool stuff, useful and smart</p>
+          <h2>Sofisticated Viking</h2>
+          <p>Live life at its best</p>
         </div>
-        <img class="card-user avatar" src="http://icons.iconarchive.com/icons/hopstarter/halloween-avatars/128/Angel-icon.png">
+        <%= cl_image_tag User.all[0].picture.path, size: "30x30", class: "card-user avatar" %>
         <a class="card-link" href="#" ></a>
       </div>
     </div>
@@ -33,10 +33,10 @@
       <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://www.aseascape.com/images/tents_223.jpg');">
         <div class="card-category">Popular</div>
         <div class="card-description">
-          <h2>Some stuff</h2>
-          <p>Very cool stuff, useful and smart</p>
+          <h2>Magical Goa</h2>
+          <p>Angelina and Brad's Fisherman's house</p>
         </div>
-        <img class="card-user avatar" src="http://icons.iconarchive.com/icons/hopstarter/halloween-avatars/128/Angel-icon.png">
+        <%= cl_image_tag User.all[1].picture.path, size: "30x30", class: "card-user avatar" %>
         <a class="card-link" href="#" ></a>
       </div>
     </div>
@@ -46,10 +46,10 @@
       <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://www.aseascape.com/images/pan3b.jpg');">
         <div class="card-category">Popular</div>
         <div class="card-description">
-          <h2>Some stuff</h2>
-          <p>Very cool stuff, useful and smart</p>
+          <h2>Enchanting Retreat</h2>
+          <p>Live like Robinson Crusoe</p>
         </div>
-        <img class="card-user avatar" src="http://icons.iconarchive.com/icons/hopstarter/halloween-avatars/128/Angel-icon.png">
+        <%= cl_image_tag User.all[2].picture.path, size: "30x30", class: "card-user avatar" %>
         <a class="card-link" href="#" ></a>
       </div>
     </div>

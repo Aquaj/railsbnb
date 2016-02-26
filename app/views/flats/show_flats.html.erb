@@ -1,63 +1,68 @@
-<div class="container">
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Add a new Flat
-</button>
+<div class="flats">
+  <div class="container">
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    Add a new Flat
+  </button>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Adding a Flat</h4>
-      </div>
-      <div class="modal-body">
-      <%= simple_form_for @flat do |f| %>
-      <%= f.input :address %>
-      <%= f.input :description %>
-      <%= f.input :price %>
-      <%= f.input :bathroom %>
-      <%= f.input :bedroom %>
-      <%= f.input :departure_time %>
-      <%= f.input :tv_wifi %>
-      <%= f.input :washing_machine %>
-      <%= f.input :wheelchair %>
-      <%= f.input :swimming_pool %>
-      <%= f.input :photo %>
-      <%= f.input :photo_cache, as: :hidden %>
-      <div class="form-actions">
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Adding a Flat</h4>
+        </div>
+        <div class="modal-body">
+          <%= simple_form_for @flat do |f| %>
+          <%= f.input :address %>
+          <%= f.input :description %>
+          <%= f.input :price %>
+          <%= f.input :bathroom %>
+          <%= f.input :bedroom %>
+          <%= f.input :departure_time %>
+          <%= f.input :tv_wifi %>
+          <%= f.input :washing_machine %>
+          <%= f.input :wheelchair %>
+          <%= f.input :swimming_pool %>
+          <%= f.input :photo %>
+          <%= f.input :photo_cache, as: :hidden %>
+          <div class="form-actions">
 
-      </div>
+          </div>
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <%= f.button :submit, "Submit" %>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <%= f.button :submit, "Submit" %>
+          </div>
+          <%end%>
+        </div>
       </div>
-            <%end%>
     </div>
-  </div>
-</div>
-  <div class="flats">
+    </div>
+
     <div class="row">
       <% @flats.each do |flat| %>
-        <div class="col-xs-12 col-sm-4 ">
-          <div class="flat">
-            <%= link_to flat do %>
-            <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('background.jpg');">
-              <div class="card-category">Popular</div>
-              <div class="card-description">
-                <h2><%= flat.address %></h2>
-                <p><%= flat.description %></p>
-                <%= cl_image_tag(flat.photo) %>
-                <% if flat.user == current_user %>
-                  <%= link_to "Delete", flat, method: :delete %>
-                <% end %>
-              </div>
-              <img class="card-user avatar" src="user.jpg">
+      <div class="col-xs-12 col-sm-4 ">
+        <div class="flat">
+          <%= link_to flat do %>
+          <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path flat.photo, size: "500x500" %>');">
+            <div class="card-category"><%= flat.address.split(",")[-1] %></div>
+            <div class="card-description">
+            <h2><%= "#{flat.address.split(",")[0]}, #{flat.address.split(",")[1].split[0]} #{flat.address.split(",")[-1]}" %></h2>
+              <p><%= flat.description %></p>
+              <% if flat.user == current_user %>
+                <%= link_to "Delete", flat, method: :delete %>
+              <% end %>
             </div>
-            <% end %>
+              <% if flat.user.picture.present? %>
+                <%= cl_image_tag flat.user.picture.path, size: "30x30", class: "card-user avatar" %>
+              <% else %>
+                <img class="card-user avatar" src="http://placehold.it/32">
+              <% end %>
           </div>
+          <% end %>
         </div>
+      </div>
       <% end %>
     </div>
   </div>

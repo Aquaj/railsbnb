@@ -5,7 +5,6 @@ def create
   @flat = Flat.find(params[:flat_id])
   @booking = current_user.bookings.new(booking_params)
   if @booking.save
-    raise
     redirect_to booking_path @booking
   else
     render "bookings/new"

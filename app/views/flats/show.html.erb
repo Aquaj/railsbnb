@@ -1,32 +1,121 @@
 <div class="flat-info">
   <% if @flat.photo.present? %>
-    <div class="top-banner" style="background-image: url(<%= @flat.photo.path %>)"></div>
+    <div class="top-banner" style="background-image: url(<%= cl_image_path @flat.photo, size:"1500x500" %>)"></div>
   <% else %>
     <div class="top-banner" style="background-image: url('http://placehold.it/1500')"></div>
   <% end %>
   <div class="flat-content">
     <div class="flat-details">
-      <div class="greetings">
-        <div class="owner-pic">
-          <% if @flat.user.picture %>
-            <%= cl_image_tag @flat.user.picture.path, size: "100x100" %>
+      <div class="flat-presentation">
+        <div class="flat-detail flat-price">
+          <div class="characteristic price">
+            <div class="logo"><%= icon("eur") %></div>
+            <%= @flat.price %>€/night
+          </div>
+        </div>
+        <div class="flat-detail flat-address">
+          <div><%= @flat.user.name %>'s home is at :</div>
+          <div><%= @flat.address %></div>
+        </div>
+        <div class="flat-detail author-pic">
+          <% if @flat.user.picture.present? %>
+            <%= cl_image_tag @flat.user.picture.path, class: "avatar avatar-very-large" %>
           <% else %>
-            <%= image_tag 'http://placehold.it/100', class: "avatar avatar-very-large" %>
+            <%= image_tag "http://placehold.it/100", class: "avatar avatar-very-large" %>
           <% end %>
         </div>
-        <span class="name"><%= @flat.user.name %></span> welcomes you to the: <br>
-        <span class="address"> <%= @flat.address %></span>
       </div>
       <div class="flat-characteristics">
-        <div class="price"><%= @flat.price %>€/night</div>
-        <div class="capacity">Available for <%= @flat.capacity %> persons</div>
-        <div class="bathroom"><%= @flat.bathroom %> bathrooms</div>
-        <div class="bedroom"><%= @flat.bedroom %> bedrooms</div>
-        <div class="departure_time">Exit at <%= @flat.departure_time %></div>
-        <div class="tv_wifi"><%= @flat.tv_wifi %></div>
-        <div class="washing_machine"><%= @flat.washing_machine%></div>
-        <div class="swimming_pool"><%= @flat.swimming_pool%></div>
-        <div class="wheelchair"><%= @flat.wheelchair%></div>
+        <div style="padding:0 15px">
+          <div class="row">
+            <div class="col-sm-3 padded">
+              <div class="characteristic capacity">
+                <div class="logo"><%= icon("users") %></div>
+                <%= @flat.capacity %> persons max
+              </div>
+            </div>
+            <div class="col-sm-3 padded">
+              <div class="characteristic bathroom">
+                <div class="logo shower"><%= icon("filter") %></div>
+                <%= @flat.bathroom %> bathroom<%= 's' if (@flat.bathroom > 1) %>
+              </div>
+            </div>
+            <div class="col-sm-3 padded">
+              <div class="characteristic bedroom">
+                <div class="logo"><%= icon("bed") %></div>
+                <%= @flat.bedroom %> bedroom<%= 's' if (@flat.bedroom > 1) %>
+              </div>
+            </div>
+            <div class="col-sm-3 padded">
+              <div class="characteristic departure_time">
+                <div class="logo"><%= icon("clock-o") %></div>
+                Departure at <%= @flat.departure_time %>h
+              </div>
+            </div>
+            <% if @flat.tv_wifi %>
+              <div class="col-sm-3 padded">
+                <div class="characteristic tv_wifi">
+                  <div class="logo"><%= icon("wifi") %></div>
+                  Wifi
+                </div>
+              </div>
+            <% end %>
+            <% if @flat.washing_machine %>
+              <div class="col-sm-3 padded">
+                <div class="characteristic washing_machine">
+                  <div class="logo"><%= icon("tint") %></div>
+                  Washing machine
+                </div>
+              </div>
+            <% end %>
+            <% if @flat.swimming_pool %>
+              <div class="col-sm-3 padded">
+                <div class="characteristic swimming_pool">
+                  <div class="logo"><%= icon("life-ring") %></div>
+                  Swimming pool
+                </div>
+              </div>
+            <% end %>
+            <% if @flat.wheelchair %>
+              <div class="col-sm-3 padded">
+                <div class="characteristic wheelchair">
+                  <div class="logo"><%= icon("wheelchair") %></div>
+                  Wheelchair access
+                </div>
+              </div>
+            <% end %>
+            <% if user_signed_in? %>
+              <div class="col-sm-3 padded">
+                <div class="characteristic book">
+                  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                    Book this place
+                  </button>
+                  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title" id="myModalLabel">Make a reservation.</h4>
+                        </div>
+                        <div class="modal-body">
+                          <%= simple_form_for [@flat, @booking] do |f| %>
+                            <%= f.input :start_date %>
+                            <%= f.input :end_date %>
+                            <%= f.submit %>
+                          <% end %>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
     <div class="map-container"><div id="map"></div></div>
