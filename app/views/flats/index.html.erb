@@ -8,14 +8,14 @@
       <% @flats.each do |flat| %>
       <div class="col-xs-12 col-sm-4 ">
         <div class="flat">
-          <%= link_to flat, class: "card-link" do %>
+          <%= link_to flat do %>
           <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path flat.photo, size: "500x500" %>');">
             <div class="card-category"><%= flat.address.split(",")[-1] %></div>
             <div class="card-description">
             <h2><%= "#{flat.address.split(",")[0]}, #{flat.address.split(",")[1].split[0]} #{flat.address.split(",")[-1]}" %></h2>
               <p><%= flat.description %></p>
               <% if flat.user == current_user %>
-                <%= link_to "Delete", flat, class: "card-link", method: :delete %>
+                <%= link_to "Delete", flat, method: :delete %>
               <% end %>
             </div>
               <% if flat.user.picture.present? %>
