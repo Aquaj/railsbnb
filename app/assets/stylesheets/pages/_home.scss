@@ -2,3 +2,26 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+
+ .btn-square{
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  text-shadow: 1px 1px 1px black;
+
+  &:hover{
+    background: transparent;
+    border-color: lighten($brand-primary, 20%);
+  }
+}
+
+.wrapper{
+  margin: 100px 0;
+  padding: 0 15px;
+
+  .title {
+    margin-bottom: 150px;
+    text-align: center;
+  }
+}

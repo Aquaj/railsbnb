@@ -15,15 +15,22 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
   <body class="site">
-    <%= render "shared/navbar" %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if flash[:notice] || flash[:alert] %>
+      <%= render "shared/navbar", locals: nil %>
+    <% else %>
+      <%= render "shared/navbar", locals: {class: yield(:navbar_classes)} %>
+    <% end %>
+    <% if flash[:notice] -%>
+      <p class="alert alert-info pullDown"><%= notice %></p>
+    <% end %>
+    <% if flash[:alert] -%>
+      <p class="alert alert-warning pullDown"><%= alert %></p>
+    <% end %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= cloudinary_js_config %>
     <% if content_for? :js %>
       <%= yield :js %>
     <% end %>
-    <%= render "shared/footer" %>
   </body>
 </html>
