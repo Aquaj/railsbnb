@@ -4,6 +4,7 @@
   <p>Owner: <span><%= @flat.user.name %></span></p>
   <p>Address: <span><%= @flat.address %></span></p>
   <p>Description: <span><%= @flat.description %></span><p>
+  <%= cl_image_tag @flat.photo, height: 300, width: 400, crop: :fill %>
   <div class="content">
     <div id="map" style='width: 400px; height: 200px;'></div>
   </div>

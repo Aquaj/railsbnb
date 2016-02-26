@@ -43,7 +43,7 @@ private
   end
 
   def flat_params
-    params.require(:flat).permit(:address, :price, :description, :bathroom, :bedroom, :washing_machine, :tv_wifi, :swimming_pool, :wheelchair, :photos)
+    params.require(:flat).permit(:address, :price, :description, :bathroom, :bedroom, :washing_machine, :tv_wifi, :swimming_pool, :wheelchair, :photo, :photo_cache)
   end
 
 end
