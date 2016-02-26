@@ -12,6 +12,7 @@ class FlatsController < ApplicationController
     end
 
     def show
+      @booking = @flat.bookings.new
     end
 
     def new
